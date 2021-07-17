@@ -1,0 +1,11 @@
+body {
+  font-family: "Otomanopee One", sans-serif;
+  font-size: 14px;
+  background-image: url(./assets/images/wallpaper.jpg); /*https://i.pinimg.com/originals/ce/97/a8/ce97a83b88cee188a7ec127182973167.jpg*/
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
+}

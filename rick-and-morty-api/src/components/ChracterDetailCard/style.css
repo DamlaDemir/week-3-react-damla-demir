@@ -1,0 +1,112 @@
+.chracter-detail-card {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 35vh 65vh;
+  width: 100%;
+  background-color: #373b4f;
+  box-shadow: 5px 10px #888888;
+  border-radius: 10px;
+}
+
+.img-section {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  text-align: center;
+}
+
+.img-section img {
+  margin: 20px 30px;
+  border-radius: 10px;
+  border: 3px solid #7ff049;
+  box-shadow: 5px 10px #888888;
+  height: 90%;
+  width: 85%;
+}
+
+.info-section {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.episode-section {
+  grid-column: 1/3;
+  grid-row: 2/3;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.episode-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.episode-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.episode-section::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.info-section legend,
+.episode-section legend {
+  color: white;
+}
+
+.chracter-detail-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0dbdb;
+  color: white;
+  padding: 15px;
+}
+
+.chracter-detail-info-item > span {
+  color: #eceb77;
+}
+
+.episodes {
+  width: 100%;
+  background-color: #a7acc6;
+}
+
+.episodes th {
+  text-align: initial;
+  background-color: #eceb77;
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+}
+
+.episodes td,
+.episodes th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 45%;
+}
+
+.episodes tr:nth-child(even) {
+  background-color: #ced1e0;
+}
+
+.episodes tr:hover {
+  background-color: #8188a8;
+}
+
+.footer-section {
+  grid-column: 1/3;
+  grid-row: 3/4;
+  margin: 20px;
+}
+
+.back {
+  background-color: #bd7a73;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Otomanopee One", sans-serif;
+}

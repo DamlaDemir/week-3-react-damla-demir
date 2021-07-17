@@ -1,0 +1,79 @@
+.chracter-card {
+  width: 320px;
+  height: 380px;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  background-color: #373b4f;
+  box-shadow: 5px 10px #888888;
+}
+
+.chracter-card:hover {
+  transform: scale(1.1);
+}
+
+.card-header {
+  height: 80px;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+  background-image: url(../../assets/images/card-banner.jpg);
+}
+
+.card-header img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  border: 2px solid rgba(2, 0, 36, 1);
+  position: absolute;
+  top: 15px;
+  left: 120px;
+}
+
+.card-body {
+  margin-top: 25px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
+  height: 220px;
+  padding-left: 3px;
+}
+
+.chracter-title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.chracter-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.chracter-info-item span {
+  font-family: "Otomanopee One", sans-serif;
+  margin: 8px;
+}
+
+.chracter-info-item > span {
+  color: #eceb77;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.card-footer a {
+  background-color: #bd7a73;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
