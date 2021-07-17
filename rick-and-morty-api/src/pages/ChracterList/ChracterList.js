@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import {
   ChracterCard,
   Dropdown,
@@ -7,9 +6,9 @@ import {
   NoResult,
 } from "../../components/index";
 import { generateQueryString } from "../../helpers/stringHelper";
+import { getAllChracters } from "../../services/ApiService";
 import "./style.css";
 
-const BASE_URL = "https://rickandmortyapi.com/api/character/";
 const genderOptions = [
   { text: "Male", value: "male" },
   { text: "Female", value: "female" },
@@ -33,13 +32,11 @@ const ChracterList = () => {
   }, []);
 
   const getChracters = async (queryString = "") => {
-    let response = await axios.get(`${BASE_URL}${queryString}`);
+    let response = await getAllChracters(queryString);
 
-    if (response.status === 200) {
-      setChracters(response.data.results);
-      setTotalPages(response.data.info.pages);
-    } else {
-      alert("Error on get chracter list!");
+    if (response) {
+      setChracters(response.results);
+      setTotalPages(response.info.pages);
     }
   };
 

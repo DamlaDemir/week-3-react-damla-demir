@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { ChracterDetailCard } from "../../components";
+import { getChracter, getEpisodesByChracter } from "../../services/ApiService";
+
 import "./style.css";
 
 const ChracterDetail = () => {
@@ -15,25 +17,13 @@ const ChracterDetail = () => {
 
   const getChracterDetail = async () => {
     let episodes = [],
-      response = await axios.get(
-        `https://rickandmortyapi.com/api/character/${id}`
-      );
+      response = await getChracter(id);
 
-    if (response.status === 200) {
-      await Promise.all(
-        response.data.episode.map(async (episodeUrl) => {
-          let episodeListResponse = await axios.get(episodeUrl);
+    if (response) {
+      episodes = await getEpisodesByChracter(response.episode);
 
-          if (episodeListResponse.status === 200) {
-            episodes.push(episodeListResponse.data);
-          }
-        })
-      );
-
-      setChracter(response.data);
+      setChracter(response);
       setEpisodes(episodes);
-    } else {
-      alert("Error on get chrater detail!");
     }
   };
 
