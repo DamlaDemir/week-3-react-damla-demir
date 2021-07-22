@@ -2,8 +2,8 @@ import axios from "axios";
 
 const BASE_URL = "https://rickandmortyapi.com/api/character/";
 
-export const getAllChracters = async (queryString = "") => {
-  let response = await axios.get(`${BASE_URL}${queryString}`);
+export const getAllChracters = async (queryParams = {}) => {
+  let response = await axios.get(`${BASE_URL}`, { params: queryParams });
 
   if (response.status === 200) {
     return response.data;

@@ -5,7 +5,6 @@ import {
   Pager,
   NoResult,
 } from "../../components/index";
-import { generateQueryString } from "../../helpers/stringHelper";
 import { getAllChracters } from "../../services/ApiService";
 import "./style.css";
 
@@ -24,15 +23,15 @@ const statusOptions = [
 const ChracterList = () => {
   const [chracters, setChracters] = useState([]);
   const [totalPageCount, setTotalPages] = useState(0);
-  const [filterParameters, setFilterParameters] = useState([]);
+  const [filterParameters, setFilterParameters] = useState({});
   const [refreshPager, setRefreshPager] = useState(1);
 
   useEffect(async () => {
     getChracters();
   }, []);
 
-  const getChracters = async (queryString = "") => {
-    let response = await getAllChracters(queryString);
+  const getChracters = async () => {
+    let response = await getAllChracters(filterParameters);
 
     if (response) {
       setChracters(response.results);
@@ -45,32 +44,22 @@ const ChracterList = () => {
   };
 
   const setParameters = (key, value) => {
-    let parameter = filterParameters.filter(
-      (parameter) => parameter.key === key
-    )[0];
-
-    if (parameter != undefined) {
-      parameter.value = value;
-    } else {
-      filterParameters.push({
-        key: key,
-        value: value,
-      });
-    }
+    filterParameters[key] = value;
 
     setFilterParameters(filterParameters);
   };
 
   const filter = async () => {
-    let queryString = generateQueryString(filterParameters, false);
-    await getChracters(queryString);
+    delete filterParameters.page;
+    setFilterParameters(filterParameters);
+
+    await getChracters();
     setRefreshPager(refreshPager + 1);
   };
 
   const goToPage = async (page) => {
     setParameters("page", page);
-    let queryString = generateQueryString(filterParameters, true);
-    await getChracters(queryString);
+    await getChracters();
   };
 
   return (
