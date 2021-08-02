@@ -1,9 +1,8 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { ChracterDetailCard } from "../../components";
 import { getChracter, getEpisodesByChracter } from "../../services/ApiService";
-
 import "./style.css";
 
 const ChracterDetail = () => {
@@ -19,12 +18,10 @@ const ChracterDetail = () => {
     let episodes = [],
       response = await getChracter(id);
 
-    if (response) {
-      episodes = await getEpisodesByChracter(response.episode);
+    episodes = await getEpisodesByChracter(response.episode);
 
-      setChracter(response);
-      setEpisodes(episodes);
-    }
+    setChracter(response);
+    setEpisodes(episodes);
   };
 
   return (

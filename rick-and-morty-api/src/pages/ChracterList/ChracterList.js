@@ -33,10 +33,8 @@ const ChracterList = () => {
   const getChracters = async () => {
     let response = await getAllChracters(filterParameters);
 
-    if (response) {
-      setChracters(response.results);
-      setTotalPages(response.info.pages);
-    }
+    setChracters(response.results);
+    setTotalPages(response.info.pages);
   };
 
   const onChangeFilterDropdown = (event) => {
